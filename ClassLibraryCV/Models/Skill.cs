@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BlazorApp3.Shared
+namespace ClassLibraryCV.Models
 {
     public class Skills
     {

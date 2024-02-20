@@ -1,11 +1,13 @@
-﻿namespace BlazorApp3.Shared
+﻿using System.Net.Http.Json;
+
+namespace CVClassLibrary.Models
 {
     public class APICRUD
     {
-        List<Skills> listOfSkills = new();
+        List<Skill> listOfSkills = new();
         public HttpClient httpClient = new();
 
-        public async Task<List<Skills>> ListSkills(string baseAdress)
+        public async Task<List<Skill>> ListSkills(string baseAdress)
         {
             try
             {
@@ -18,7 +20,7 @@
                 if (response.IsSuccessStatusCode)
                 {
                     // Deserialize the response body into a list of products
-                    listOfSkills = await response.Content.ReadFromJsonAsync<List<Skills>>();
+                    listOfSkills = await response.Content.ReadFromJsonAsync<List<Skill>>();
                     if (listOfSkills != null)
                         return listOfSkills;
 
@@ -41,7 +43,7 @@
             }
         }
 
-        public async Task<bool> AddSkill(string baseAdress, Skills skill)
+        public async Task<bool> AddSkill(string baseAdress, Skill skill)
         {
             try
             {

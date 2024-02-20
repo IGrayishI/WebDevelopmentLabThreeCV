@@ -1,11 +1,8 @@
 using BlazorApp3.Areas.Identity;
 using BlazorApp3.Data;
-using BlazorApp3.Shared;
-using Microsoft.AspNetCore.Components;
+using CVClassLibrary.Models;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorApp3

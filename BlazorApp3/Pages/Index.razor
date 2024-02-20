@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using CVClassLibrary.Models
 @inject APICRUD apiCRUD;
 
 <body>
@@ -70,8 +71,8 @@
 
 @code {
     //--- Properties ---
-    private Skills NewSkill { get; set; } = new Skills();
-    private List<Skills>? _listOfSkills;
+    private Skill NewSkill { get; set; } = new Skill();
+    private List<Skill>? _listOfSkills;
 
     //---Methods---
 

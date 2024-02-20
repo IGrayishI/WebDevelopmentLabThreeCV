@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using BlazorApp3.Data;
-using BlazorApp3.Shared;
+using CVClassLibrary.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -68,7 +68,7 @@ app.MapGet("/skills/{id}", async (ApplicationDbContext dbContext, Guid id) =>
 });
 
 //Create
-app.MapPost("/skill", async (ApplicationDbContext dbContext, Skills skill) =>
+app.MapPost("/skill", async (ApplicationDbContext dbContext, Skill skill) =>
 {
     try
     {
@@ -85,7 +85,7 @@ app.MapPost("/skill", async (ApplicationDbContext dbContext, Skills skill) =>
 
 
 //Update
-app.MapPut("/Skills/{id}", async (ApplicationDbContext dbContext, Guid id, Skills skills) =>
+app.MapPut("/Skills/{id}", async (ApplicationDbContext dbContext, Guid id, Skill skills) =>
 {
     try
     {
