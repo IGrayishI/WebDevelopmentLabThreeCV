@@ -12,7 +12,7 @@
 
     <AuthorizeView>
         <NotAuthorized>
-            <div>
+            <div class="my-2">
                 <p>You are not signed in.</p>
                 @if (_listOfSkills is null)
                 {
@@ -23,8 +23,9 @@
                     @foreach (var item in _listOfSkills)
                     {
                         
-                        <div class="card p-2">
+                        <div class="card p-2 my-1 bg-light">
                             <h4>@item.Title</h4>
+                            <img src="@item.pictureURL" alt="Image not available" class="col-1" />
                             <p>@item.Description</p>
                             <p>@item.SkillLevel /10</p>
                             <p>@item.YearsOfExperience Years of Experience</p>
