@@ -8,6 +8,7 @@ namespace BlazorApp3.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<Project> Projects { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
