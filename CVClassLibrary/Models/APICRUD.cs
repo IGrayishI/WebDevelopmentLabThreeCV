@@ -62,5 +62,18 @@ namespace CVClassLibrary.Models
                 return false;
             }
         }
+        public async Task<bool> UpdateSkill(string baseAdress, Skill skill)
+        {
+            try
+            {
+                httpClient = new HttpClient { BaseAddress = new Uri(baseAdress) };
+                var respone = await httpClient.PutAsJsonAsync($"/skills/{skill.Id}", skill);
+                return respone.IsSuccessStatusCode;
+            } catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while updating skill: " + ex.Message);
+                return false;
+            }
+        }
     }
 }

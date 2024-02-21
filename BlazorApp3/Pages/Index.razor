@@ -35,7 +35,7 @@
         </NotAuthorized>
         <Authorized>
                 
-            <EditForm Model="@NewSkill" OnSubmit="@SubmitSkill" id="addskill" Context="editContext">
+            <EditForm Model="@NewSkill" OnValidSubmit="@SubmitSkill" id="addskill" Context="editContext">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
 
@@ -82,7 +82,7 @@
                 
                 <div class="form-group">
                     <label for="id">Id</label>
-                    <InputSelect id="id" class="form-control" @bind-Value="NewSkill.Id" @onchange="OnValueChanged">
+                    <InputSelect id="id" class="form-control" @bind-Value="NewSkill.Id" >
                         @if (_listOfSkills is null)
                         {
                             <p>Skill List Empty</p>
@@ -98,8 +98,8 @@
                 </div>
 
                 <button class="btn btn-primary my-2" form="addskill" type="submit">Submit</button>
-            </EditForm>
                 <button class="btn btn-primary my-2" @onclick="UpdateSkill" type="button">Update</button>
+            </EditForm>
 
         </Authorized>
     </AuthorizeView>
