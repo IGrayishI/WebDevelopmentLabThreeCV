@@ -17,6 +17,7 @@ namespace CVClassLibrary.Models
 
         [Required(ErrorMessage = "Years of experience is required.")]
         public int YearsOfExperience { get; set; }
+        public string? pictureURL { get; set; }
 
         public Skill()
         {

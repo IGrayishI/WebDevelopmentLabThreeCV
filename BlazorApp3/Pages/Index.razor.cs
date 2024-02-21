@@ -64,6 +64,7 @@ namespace BlazorApp3.Pages
                     var skillToUpdate = _listOfSkills.Find(s => s.Id == NewSkill.Id);
                     
                     skillToUpdate.Title = NewSkill.Title;
+                    skillToUpdate.pictureURL = NewSkill.pictureURL;
                     skillToUpdate.Description = NewSkill.Description;
                     skillToUpdate.SkillLevel = NewSkill.SkillLevel;
                     skillToUpdate.YearsOfExperience = NewSkill.YearsOfExperience;
@@ -78,6 +79,32 @@ namespace BlazorApp3.Pages
                 Console.WriteLine($"Error. {ex.Message}");
             }
         }
-        
+
+        private async Task DeleteSkill()
+        {
+            try
+            {
+                bool response = await apiCRUD.DeleteSkill(APIConnection, NewSkill);
+                if (response)
+                {
+                    var skillToDelete = _listOfSkills.Find(s => s.Id == NewSkill.Id);
+                    if(skillToDelete != null)
+                    {
+                        _listOfSkills.Remove(skillToDelete);
+                        Console.WriteLine("Delete Complete");
+                        NewSkill = new();
+                    } else
+                    {
+                        await Console.Out.WriteLineAsync();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //Some sort of error logger?
+                Console.WriteLine($"Error. {ex.Message}");
+            }
+        }
+
     }
 }

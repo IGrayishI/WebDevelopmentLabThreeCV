@@ -47,11 +47,16 @@
                 {
                     @foreach (var item in _listOfSkills)
                     {
-                        <div class="card p-2">
-                            <h4>@item.Title</h4>
-                            <p>@item.Description</p>
-                            <p>@item.SkillLevel /10</p>
-                            <p>@item.YearsOfExperience Years of Experience</p>
+                        <div class="column">
+                            <div class="row">
+                                <div class="card p-2 mb-2">
+                                    <h4>@item.Title</h4>
+                                    <img src="@item.pictureURL" alt="Image not available" class="col-1" />
+                                    <p>@item.Description</p>
+                                    <p>@item.SkillLevel /10</p>
+                                    <p>@item.YearsOfExperience Years of Experience</p>
+                                </div>
+                            </div>
                         </div>
                     }
                 }
@@ -60,6 +65,11 @@
                     <label for="title">Title</label>
                     <InputText id="title" class="form-control" @bind-Value="NewSkill.Title"></InputText>
                     <ValidationMessage For="@(() => NewSkill.Title)" />
+                </div>
+                <div class="form-group">
+                    <label for="img">Image</label>
+                    <InputText id="Image" class="form-control" @bind-Value="NewSkill.pictureURL"></InputText>
+                    <ValidationMessage For="@(() => NewSkill.pictureURL)" />
                 </div>
 
                 <div class="form-group">
@@ -98,7 +108,8 @@
                 </div>
 
                 <button class="btn btn-primary my-2" form="addskill" type="submit">Submit</button>
-                <button class="btn btn-primary my-2" @onclick="UpdateSkill" type="button">Update</button>
+                <button class="btn btn-secondary my-2" @onclick="UpdateSkill" type="button">Update</button>
+                <button class="btn btn-danger my-2" @onclick="DeleteSkill" type="button">Delete</button>
             </EditForm>
 
         </Authorized>

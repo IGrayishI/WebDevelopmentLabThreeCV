@@ -4,10 +4,10 @@ information från en databas. (Fritt att välja mellan databaser,
 full CRUD)															: ✔
 ● I databasen skall det finnas information om olika teknologier ni
 lärt er, hur många års erfarenhet ni har inom det och er “skill”
-nivå																: 
+nivå																: ✔
 ● Hemsidan skall vara hostad på Azure								: 
 ● Blazor skall användas												: ✔
-● Bootstrap rekommenderas men det går bra att använda CSS			: 
+● Bootstrap rekommenderas men det går bra att använda CSS			: ✔
 ● Anropen till databasen skall vara asynkrona						: ✔
 ● Det skall finnas en “Admin” vy som gör det enkelt att posta upp	
 ny data till databasen												: ✔
@@ -15,10 +15,10 @@ ny data till databasen												: ✔
 ● Hemsidan skall se ut som ett CV									: 
 ● Det skall finnas länkar till er linkedin samt github page			: 
 ● Editform skall användas och datan skall valideras					: ✔
-● Alla bilder skall ha en alt text									:
+● Alla bilder skall ha en alt text									: ✔
 ● Det skall finnas minst två tabeller, ett för skills och ett för	
 projekt. I projekt tabellen beskriver ni kort de projekt ni
-genomfört under er tid på iths										: 
+genomfört under er tid på iths										: ✔
 ● Inga kraschar eller errors får förekomma, allt skall hanteras		: 
 ● Ingen navbar skall användas										: 
 

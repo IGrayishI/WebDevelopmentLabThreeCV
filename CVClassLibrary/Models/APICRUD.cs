@@ -75,5 +75,20 @@ namespace CVClassLibrary.Models
                 return false;
             }
         }
+
+        public async Task<bool> DeleteSkill(string baseAdress, Skill skill)
+        {
+            try
+            {
+                httpClient = new HttpClient { BaseAddress = new Uri(baseAdress) };
+                var respone = await httpClient.DeleteAsync($"/skills/{skill.Id}");
+                return respone.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while updating skill: " + ex.Message);
+                return false;
+            }
+        }
     }
 }

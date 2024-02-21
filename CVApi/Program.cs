@@ -94,6 +94,7 @@ app.MapPut("/Skills/{id}", async (ApplicationDbContext dbContext, Guid id, Skill
         if (skillsToUpdate != null)
         {
             skillsToUpdate.Title = skills.Title;
+            skillsToUpdate.pictureURL = skills.pictureURL;
             skillsToUpdate.Description = skills.Description;
             skillsToUpdate.SkillLevel = skills.SkillLevel;
             skillsToUpdate.YearsOfExperience = skills.YearsOfExperience;
