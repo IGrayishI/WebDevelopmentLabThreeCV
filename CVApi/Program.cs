@@ -142,4 +142,116 @@ app.MapDelete("/skills/{id}", async (ApplicationDbContext dbContext, Guid id) =>
 
 });
 
+//------------------------ Projects ------------------------
+
+//Read, All 
+app.MapGet("/projects", async (ApplicationDbContext dbContext) =>
+{
+    try
+    {
+        var projects = await dbContext.Projects.ToListAsync();
+        return Results.Ok(projects);
+    }
+    catch
+    {
+        return Results.Problem("Server Error");
+    }
+});
+
+//Read, By ID
+app.MapGet("/projects/{id}", async (ApplicationDbContext dbContext, Guid id) =>
+{
+    try
+    {
+        var product = await dbContext.Projects.FirstOrDefaultAsync(x => x.Id == id);
+        if (product != null)
+        {
+            return Results.Ok(product);
+        }
+        else
+        {
+            return Results.NotFound("No product with this ID was found");
+        }
+
+    }
+    catch
+    {
+        return Results.Problem("Server Error");
+    }
+});
+
+//Create
+app.MapPost("/project", async (ApplicationDbContext dbContext, Project projects) =>
+{
+    try
+    {
+        await dbContext.Projects.AddAsync(projects);
+        await dbContext.SaveChangesAsync();
+
+        return Results.Ok();
+    }
+    catch (Exception)
+    {
+        return Results.StatusCode(500);
+    }
+});
+
+
+//Update
+app.MapPut("/projects/{id}", async (ApplicationDbContext dbContext, Guid id, Project project) =>
+{
+    try
+    {
+        var projectsToUpdate = await dbContext.Projects.FirstOrDefaultAsync(x => x.Id == id);
+
+        if (projectsToUpdate != null)
+        {
+            projectsToUpdate.Title = project.Title;
+            projectsToUpdate.GithubLink = project.GithubLink;
+            projectsToUpdate.Description = project.Description;
+            
+
+
+            await dbContext.SaveChangesAsync();
+            return Results.Ok(projectsToUpdate);
+        }
+        else
+        {
+            return Results.NotFound("No product with this ID was found");
+        }
+
+    }
+    catch
+    {
+        return Results.Problem("Server Error");
+
+    }
+
+});
+
+//Delete
+app.MapDelete("/projects/{id}", async (ApplicationDbContext dbContext, Guid id) =>
+{
+    try
+    {
+        var projectToDelete = await dbContext.Projects.FirstOrDefaultAsync(x => x.Id == id);
+
+        if (projectToDelete == null)
+        {
+            return Results.NotFound("Product was not found.");
+        }
+
+        dbContext.Projects.Remove(projectToDelete);
+
+        await dbContext.SaveChangesAsync();
+        return Results.Ok(projectToDelete);
+
+    }
+    catch
+    {
+        return Results.Problem("Server Error");
+    }
+
+});
+
 app.Run();

@@ -12,7 +12,7 @@ nivå																: ✔
 ● Det skall finnas en “Admin” vy som gör det enkelt att posta upp	
 ny data till databasen												: ✔
 ○ Denna vyn skall bara vara synlig för er							: ✔
-● Hemsidan skall se ut som ett CV									: 
+● Hemsidan skall se ut som ett CV									: ✔
 ● Det skall finnas länkar till er linkedin samt github page			: 
 ● Editform skall användas och datan skall valideras					: ✔
 ● Alla bilder skall ha en alt text									: ✔
@@ -20,7 +20,7 @@ ny data till databasen												: ✔
 projekt. I projekt tabellen beskriver ni kort de projekt ni
 genomfört under er tid på iths										: ✔
 ● Inga kraschar eller errors får förekomma, allt skall hanteras		: 
-● Ingen navbar skall användas										: 
+● Ingen navbar skall användas										: ✔
 
 					--OPTIONAL--
 ● För adminvyn skall Identity användas								: ✔
