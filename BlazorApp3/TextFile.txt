@@ -1,4 +1,4 @@
-﻿● En SPA applikation												: 
+﻿● En SPA applikation												: ✔
 ● Hemsidan skall vara kopplad till ett API som hämtar				
 information från en databas. (Fritt att välja mellan databaser,		
 full CRUD)															: ✔
@@ -13,17 +13,17 @@ nivå																: ✔
 ny data till databasen												: ✔
 ○ Denna vyn skall bara vara synlig för er							: ✔
 ● Hemsidan skall se ut som ett CV									: ✔
-● Det skall finnas länkar till er linkedin samt github page			: 
+● Det skall finnas länkar till er linkedin samt github page			: ✔
 ● Editform skall användas och datan skall valideras					: ✔
 ● Alla bilder skall ha en alt text									: ✔
 ● Det skall finnas minst två tabeller, ett för skills och ett för	
 projekt. I projekt tabellen beskriver ni kort de projekt ni
 genomfört under er tid på iths										: ✔
-● Inga kraschar eller errors får förekomma, allt skall hanteras		: 
+● Inga kraschar eller errors får förekomma, allt skall hanteras		: ✔
 ● Ingen navbar skall användas										: ✔
 
 					--OPTIONAL--
 ● För adminvyn skall Identity användas								: ✔
 ● Hemsidan skall vara designad enligt “mobile-first” tänket men
-också vara responsiv på andra enheter								: 
+också vara responsiv på andra enheter								: ✔
 ● Något tredjeparts API skall konsumeras							: 

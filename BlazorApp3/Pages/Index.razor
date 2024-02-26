@@ -22,11 +22,10 @@
                 {
                     @foreach (var item in _listOfProjects)
                     {
-
                         <div class="card p-2 my-1 bg-light">
                             <h4>@item.Title</h4>
                             <p>@item.Description</p>
-                            <a>@item.GithubLink</a>
+                            <a href="@item.GithubLink" target="_blank"><img src="/images/github-mark.png" alt="Github Mark" style="width: 20px" /></a>
                         </div>
                     }
                 }
@@ -42,7 +41,6 @@
                 {
                     @foreach (var item in _listOfSkills)
                     {
-                        
                         <div class="card p-2 my-1 bg-light">
                             <h4>@item.Title</h4>
                             <img src="@item.pictureURL" alt="Image not available" class="col-1" />
@@ -66,11 +64,10 @@
                 {
                     @foreach (var item in _listOfProjects)
                     {
-
                         <div class="card p-2 my-1 bg-light">
                             <h4>@item.Title</h4>
                             <p>@item.Description</p>
-                            <p>You can find it <a href="@item.GithubLink">Here!</a></p>
+                            <a href="@item.GithubLink" target="_blank"><img src="/images/github-mark.png" alt="Github Mark" style="width: 20px" /></a>
                         </div>
                     }
                 }
@@ -98,121 +95,121 @@
                 }
             </div>
 
-                <div class="form-group">
+            <div class="form-group">
 
-                        <label for="toggle">Toggle Skill/Projects</label>
-                    <InputSelect @bind-Value="@selectedForm">
-                        <option value="Skill">Skill Form</option>
-                        <option value="Project">Project Form</option>
-                    </InputSelect>
+                <label for="toggle">Toggle Skill/Projects</label>
+                <InputSelect @bind-Value="@selectedForm">
+                    <option value="Skill">Skill Form</option>
+                    <option value="Project">Project Form</option>
+                </InputSelect>
 
-                    @if (selectedForm == "Skill")
-                     {
-                        <EditForm Model="@NewSkill" OnValidSubmit="@SubmitSkill" id="addskill" Context="editContext">
-                            <DataAnnotationsValidator />
-                            <ValidationSummary />
-                            <div id="skillForm">
-                                <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <InputText id="title" class="form-control" @bind-Value="NewSkill.Title"></InputText>
-                                    <ValidationMessage For="@(() => NewSkill.Title)" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="img">Image</label>
-                                    <InputText id="Image" class="form-control" @bind-Value="NewSkill.pictureURL"></InputText>
-                                    <ValidationMessage For="@(() => NewSkill.pictureURL)" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <InputText id="description" class="form-control" @bind-Value="NewSkill.Description"></InputText>
-                                    <ValidationMessage For="@(() => NewSkill.Description)" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="level">Level</label>
-                                    <InputNumber id="level" class="form-control" @bind-Value="NewSkill.SkillLevel"></InputNumber>
-                                    <ValidationMessage For="@(() => NewSkill.SkillLevel)" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="years-of-experience">Years of Experience</label>
-                                    <InputNumber id="years-of-experience" class="form-control" @bind-Value="NewSkill.YearsOfExperience"></InputNumber>
-                                    <ValidationMessage For="@(() => NewSkill.YearsOfExperience)" />
-                                </div><br />
-                            
-                                <div class="form-group">
-                                <label for="id">Id (Only needed if Update OR Delete)</label>
-                                    <InputSelect id="id" class="form-control" @bind-Value="NewSkill.Id" >
-                                        @if (_listOfSkills is null)
-                                        {
-                                            <p>Skill List Empty</p>
-                                        } else
-                                        {
-                                            @foreach (var item in _listOfSkills)
-                                            {
-                                                <option value="@item.Id">@item.Title</option>
-                                            
-                                            }
-                                        }
-                                    </InputSelect>
-                                </div>
-
-                                <button class="btn btn-primary my-2" form="addskill" type="submit">Submit</button>
-                                <button class="btn btn-secondary my-2" @onclick="UpdateSkill" type="button">Update</button>
-                                <button class="btn btn-danger my-2" @onclick="DeleteSkill" type="button">Delete</button>
-                            </div>
-                        </EditForm>
-                     }
-                     else if (selectedForm == "Project")
-                     {
-                     <EditForm Model="@NewProject" OnValidSubmit="@SubmitProject" id="addproject" Context="editContext">
+                @if (selectedForm == "Skill")
+                {
+                    <EditForm Model="@NewSkill" OnValidSubmit="@HandleButtonPress" id="addskill" Context="editContext">
                         <DataAnnotationsValidator />
                         <ValidationSummary />
-                        <div id="projectForm">
+                        <div id="skillForm">
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                    <InputText id="title" class="form-control" @bind-Value="NewProject.Title"></InputText>
-                                    <ValidationMessage For="@(() => NewProject.Title)" />
+                                <InputText id="title" class="form-control" @bind-Value="NewSkill.Title" />
+                                <ValidationMessage For="@(() => NewSkill.Title)" />
                             </div>
                             <div class="form-group">
-                                <label for="git">GithubLink</label>
-                                    <InputText id="git" class="form-control" @bind-Value="NewProject.GithubLink"></InputText>
-                                    <ValidationMessage For="@(() => NewProject.GithubLink)" />
+                                <label for="img">Image</label>
+                                <InputText id="Image" class="form-control" @bind-Value="NewSkill.pictureURL" />
+                                <ValidationMessage For="@(() => NewSkill.pictureURL)" />
                             </div>
 
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                    <InputText id="description" class="form-control" @bind-Value="NewProject.Description"></InputText>
-                                    <ValidationMessage For="@(() => NewProject.Description)" />
+                                <InputText id="description" class="form-control" @bind-Value="NewSkill.Description" />
+                                <ValidationMessage For="@(() => NewSkill.Description)" />
                             </div>
 
                             <div class="form-group">
+                                <label for="level">Level</label>
+                                <InputNumber id="level" class="form-control" @bind-Value="NewSkill.SkillLevel" />
+                                <ValidationMessage For="@(() => NewSkill.SkillLevel)" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="years-of-experience">Years of Experience</label>
+                                <InputNumber id="years-of-experience" class="form-control" @bind-Value="NewSkill.YearsOfExperience"/>
+                                <ValidationMessage For="@(() => NewSkill.YearsOfExperience)" />
+                            </div><br />
+
+                            <div class="form-group">
                                 <label for="id">Id (Only needed if Update OR Delete)</label>
-                                    <InputSelect id="id" class="form-control" @bind-Value="NewProject.Id">
-                                    @if (_listOfProjects is null)
+                                <InputSelect id="id" class="form-control" @bind-Value="NewSkill.Id" >
+                                    @if (_listOfSkills is null)
                                     {
                                         <p>Skill List Empty</p>
-                                    } else
+                                    }
+                                    else
                                     {
-                                        @foreach (var item in _listOfProjects)
+                                        @foreach (var item in _listOfSkills)
                                         {
                                             <option value="@item.Id">@item.Title</option>
-                                        
                                         }
                                     }
                                 </InputSelect>
                             </div>
 
-                            <button class="btn btn-primary my-2" form="addproject" type="submit">Submit</button>
-                            <button class="btn btn-secondary my-2" @onclick="UpdateProject" type="button">Update</button>
-                            <button class="btn btn-danger my-2" @onclick="DeleteProject" type="button">Delete</button>
+                            <button class="btn btn-primary my-2" @onclick="() => { ButtonPress = 0;}" form="addskill" type="submit">Create</button>
+                            <button class="btn btn-secondary my-2" @onclick="() => { ButtonPress = 1;}" form="addskill" type="submit">Update</button>
+                            <button class="btn btn-danger my-2" @onclick="() => { ButtonPress = 2;}" form="addskill" type="submit">Delete</button>
                         </div>
-                     </EditForm>
-                     }
-                </div>
+                    </EditForm>
+
+                }
+                else if (selectedForm == "Project")
+                {
+                   <EditForm Model="@NewProject" OnValidSubmit="@HandleButtonPress" id="addproject" Context="editContext">
+                       <DataAnnotationsValidator />
+                       <ValidationSummary />
+                       <div id="projectForm">
+                           <div class="form-group">
+                               <label for="title">Title</label>
+                                   <InputText id="title" class="form-control" @bind-Value="NewProject.Title" ></InputText>
+                                   <ValidationMessage For="@(() => NewProject.Title)" />
+                           </div>
+                           <div class="form-group">
+                               <label for="git">GithubLink</label>
+                                   <InputText id="git" class="form-control" @bind-Value="NewProject.GithubLink"></InputText>
+                                   <ValidationMessage For="@(() => NewProject.GithubLink)" />
+                           </div>
+
+                           <div class="form-group">
+                               <label for="description">Description</label>
+                                   <InputText id="description" class="form-control" @bind-Value="NewProject.Description"></InputText>
+                                   <ValidationMessage For="@(() => NewProject.Description)" />
+                           </div>
+
+                           <div class="form-group">
+                               <label for="id">Id (Only needed if Update OR Delete)</label>
+                                   <InputSelect id="id" class="form-control" @bind-Value="NewProject.Id">
+                                   @if (_listOfProjects is null)
+                                   {
+                                       <p>Skill List Empty</p>
+                                   } else
+                                   {
+                                       @foreach (var item in _listOfProjects)
+                                       {
+                                           <option value="@item.Id">@item.Title</option>
+                               
+                                       }
+                                   }
+                               </InputSelect>
+                           </div>
+
+                           <button class="btn btn-primary my-2" @onclick="() => { ButtonPress = 0;}" form="addproject" type="submit">Create</button>
+                           <button class="btn btn-secondary my-2" @onclick="() => { ButtonPress = 1;}" form="addproject" type=" submit">Update</button>
+                           <button class="btn btn-danger my-2" @onclick="() => { ButtonPress = 2;}" form="addproject" type=" submit">Delete</button>
+                       </div>
+                   </EditForm>
+                }
+            </div>
 
         </Authorized>
     </AuthorizeView>
-
 </body>
