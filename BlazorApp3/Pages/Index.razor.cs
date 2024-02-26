@@ -8,13 +8,9 @@ namespace BlazorApp3.Pages
 
         //--- Properties ---
         private Skill NewSkill { get; set; }
-        private Skill SelectedSkill { get; set; }
-        private Guid SelectedSkillId { get; set; }
         private Project NewProject { get; set; } = new Project();
         private List<Skill>? _listOfSkills;
         private List<Project>? _listOfProjects;
-        private bool skillForm { get; set; }
-        private bool projectForm { get; set; }
         private int ButtonPress { get; set; }
         string APIConnection { get; set; }
 
