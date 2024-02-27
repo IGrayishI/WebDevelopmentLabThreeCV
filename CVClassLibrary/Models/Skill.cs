@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BlazorApp3.Shared
+namespace CVClassLibrary.Models
 {
-    public class Skills
+    public class Skill
     {
         public Guid Id { get; set; }
 
@@ -17,8 +17,9 @@ namespace BlazorApp3.Shared
 
         [Required(ErrorMessage = "Years of experience is required.")]
         public int YearsOfExperience { get; set; }
+        public string? pictureURL { get; set; }
 
-        public Skills()
+        public Skill()
         {
             Id = Guid.NewGuid();
 
