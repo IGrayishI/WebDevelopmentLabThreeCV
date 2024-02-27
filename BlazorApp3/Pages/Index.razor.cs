@@ -21,7 +21,11 @@ namespace BlazorApp3.Pages
         //Handles the change of forms
         private void HandleFormToggle(ChangeEventArgs e)
         {
-            selectedForm = e.Value.ToString();
+            try
+            {
+                selectedForm = e.Value.ToString();
+
+            } catch (Exception ex) { Console.WriteLine(ex.Message); }
         }
 
         protected override async Task OnInitializedAsync()
